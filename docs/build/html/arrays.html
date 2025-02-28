@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Antenna array and Beamformer Classes &#8212; EMLib 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Plotting and GUI apps" href="plots.html" />
+    <link rel="prev" title="Antenna Classes" href="antennas.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <span class="target" id="module-emlib.antArrays"></span><section id="antenna-array-and-beamformer-classes">
+<h1>Antenna array and Beamformer Classes<a class="headerlink" href="#antenna-array-and-beamformer-classes" title="Permalink to this heading">¶</a></h1>
+<p>This includes an AntArray class and beamformer classes to excite them</p>
+</section>
+<span class="target" id="module-emlib.antArrays.antArray"></span><p>Created on Apr 26, 2024</p>
+<p>&#64;author: keith</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="emlib.antArrays.antArray.AntArray">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AntArray</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xyz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">antennas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#emlib.antArrays.antArray.AntArray" title="Permalink to this definition">¶</a></dt>
+<dd><p>The array class is a subclass of an xyz Quant.Quants.Vector class
+This allows for the direct manipulation of the array element coordinates
+quaternion rotation and xyz offsets are directly supported,</p>
+<p>An Array holds Antenna objects or huygen’s sources.
+If Antenna objects then the EMField is the total field
+If huygen’s sources then the EMfield is the array factor
+and must be multiplied times the embedded element pattern o get the total field.</p>
+<p>The Array constructor takes the xyz coodinates of each element and an optional
+list of Antenna objects.</p>
+<p>static class methods are provided to ease the construction of some common array configurations:</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="emlib.antArrays.antArray.AntArray.createPlanarArray">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">createPlanarArray</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xNum</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xInc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xOffset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yNum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yInc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yOffset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">antennas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#emlib.antArrays.antArray.AntArray.createPlanarArray" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class method is a helper function to aid in the creation of
+planar and linear arrays.  The array is defined in the x-y plane and
+must be rotated and offset as desired. Optional alternating offsets in both x and/or
+y along for triangular type grids.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="emlib.antArrays.antArray.AntArray.getEMField">
+<span class="sig-name descname"><span class="pre">getEMField</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">driveVoltages</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obsPts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#emlib.antArrays.antArray.AntArray.getEMField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an EM pattern.</p>
+<blockquote>
+<div><p>if antennas==none then its marked as an array factor</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="emlib.antArrays.antArray.AntArray.origin">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">origin</span></span><a class="headerlink" href="#emlib.antArrays.antArray.AntArray.origin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates and returns origin (center of mass)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="emlib.antArrays.antArray.AntArray.transformToEllipsoid">
+<span class="sig-name descname"><span class="pre">transformToEllipsoid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edef</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#emlib.antArrays.antArray.AntArray.transformToEllipsoid" title="Permalink to this definition">¶</a></dt>
+<dd><p>moves array elements to surface of ellipsoid either by wrapping or projection</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-emlib.antArrays.beamformers"></span><p>Created on May 31, 2024</p>
+<p>&#64;author: keith</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="emlib.antArrays.beamformers.Beamformer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Beamformer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arrayObj</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#emlib.antArrays.beamformers.Beamformer" title="Permalink to this definition">¶</a></dt>
+<dd><p>this class takes an Array object and provides the base class for all Beamformers</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="emlib.antArrays.beamformers.SimpleBF">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SimpleBF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arrayObj</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#emlib.antArrays.beamformers.SimpleBF" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="emlib.antArrays.beamformers.SimpleBF.generateExcitations">
+<span class="sig-name descname"><span class="pre">generateExcitations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">freq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phi</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#emlib.antArrays.beamformers.SimpleBF.generateExcitations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates phasing so that a beam is formed in the theta, phi direction</p>
+</dd></dl>
+
+</dd></dl>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">EMLib</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quant.html">Quantities Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fields.html">Electromagnetic fields and polarization classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="antennas.html">Antenna Classes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Antenna array and Beamformer Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plots.html">Plotting and GUI apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plots.html#plotting-functions">Plotting Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plots.html#polarization-analysis-application">Polarization Analysis Application</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="antennas.html" title="previous chapter">Antenna Classes</a></li>
+      <li>Next: <a href="plots.html" title="next chapter">Plotting and GUI apps</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2024, Keith Smith.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/arrays.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,511 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Quantities Module &#8212; EMLib 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Electromagnetic fields and polarization classes" href="fields.html" />
+    <link rel="prev" title="Welcome to EMLib’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <span class="target" id="module-emlib.quant"><span id="quant-label"></span></span><section id="quantities-module">
+<h1>Quantities Module<a class="headerlink" href="#quantities-module" title="Permalink to this heading">¶</a></h1>
+<p>contains classes for created values with units</p>
+<p><strong>Quatities</strong> are subclasses of numpy arrays that represent fundemental quatities.
+Their constructors take a values and an optional string units.
+The default units are the standard MKS system.  Any other units convert to the MKS
+system before assigning the value to the super class (numpy array)
+quatities includes the following:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Base quantities class</p></li>
+<li><p>length</p></li>
+<li><p>Frequency</p></li>
+<li><p>Voltage</p></li>
+<li><p>current</p></li>
+<li><p>Power</p></li>
+<li><p>Time</p></li>
+<li><p>Angle</p></li>
+<li><p>Mass</p></li>
+</ol>
+</div></blockquote>
+</section>
+<span class="target" id="module-emlib.quant.quants"></span><dl class="py class">
+<dt class="sig sig-object py" id="emlib.quant.quants.Angle">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#emlib.quant.quants.Angle" title="Permalink to this definition">¶</a></dt>
+<dd><p>A  numpy array type class for values representing angles
+The default units are radians.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> – Any real number, list of numbers or numpy array</p></li>
+<li><p><strong>units</strong> – default=None.  A string defining the units of value</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>units may optional be set to:</dt><dd><p>‘rad’
+‘deg’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="emlib.quant.quants.Current">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Current</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#emlib.quant.quants.Current" title="Permalink to this definition">¶</a></dt>
+<dd><p>A  numpy array type class for values representing electrical current.
+The default units are amperes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> – Any real number, list of numbers or numpy array</p></li>
+<li><p><strong>units</strong> – default=None.  A string defining the units of value</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>units may optional be set to:</dt><dd><p>‘A’
+‘mA’
+‘uA’
+‘µA’
+‘kA’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="emlib.quant.quants.Frequency">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Frequency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#emlib.quant.quants.Frequency" title="Permalink to this definition">¶</a></dt>
+<dd><p>A  numpy array type class for values representing frequency.
+The default units are meters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> – Any real number, list of numbers or numpy array</p></li>
+<li><p><strong>units</strong> – default=None.  A string defining the units of value</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>units may optional be set to:</dt><dd><p>‘Hz’
+‘kHz’
+‘MHz’
+‘GHz’</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="emlib.quant.quants.Frequency.wavelength">
+<span class="sig-name descname"><span class="pre">wavelength</span></span><a class="headerlink" href="#emlib.quant.quants.Frequency.wavelength" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the freespace wavelength as a Length object</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="emlib.quant.quants.Length">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Length</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#emlib.quant.quants.Length" title="Permalink to this definition">¶</a></dt>
+<dd><p>A  numpy array type class for values representing length.
+The default units are meters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> – Any real number, list of numbers or numpy array</p></li>
+<li><p><strong>units</strong> – default=None.  A string defining the units of value</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>units may optional be set to:</dt><dd><p>‘m’
+‘cm’
+‘mm’
+‘um’
+‘µm’
+‘nm’
+‘pm’
+‘in’
+‘ft’
+‘yd’
+‘mi’
+‘nmi’
+‘mils’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="emlib.quant.quants.Mass">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Mass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#emlib.quant.quants.Mass" title="Permalink to this definition">¶</a></dt>
+<dd><p>A  numpy array type class for values representing mass.
+The default units are kg.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> – Any real number, list of numbers or numpy array</p></li>
+<li><p><strong>units</strong> – default=None.  A string defining the units of value</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>units may optional be set to:</dt><dd><p>‘kg
+‘g’
+‘mg
+‘ug
+‘µg
+‘ng
+‘oz
+‘lb
+‘t’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="emlib.quant.quants.ObsPoints">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ObsPoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#emlib.quant.quants.ObsPoints" title="Permalink to this definition">¶</a></dt>
+<dd><p>A  numpy array type class for values representing observation points.
+This class is similar to Vector, but includes class methods for creating
+vectors that support 3D and linear pattern cuts.
+The default units are meters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> – Any real number, list of numbers or numpy array</p></li>
+<li><p><strong>units</strong> – default=None.  A string defining the units of value</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>units may optional be set to:</dt><dd><p>‘m’
+‘cm’
+‘mm’
+‘um’
+‘µm’
+‘nm’
+‘pm’
+‘in’
+‘ft’
+‘yd’
+‘mi’
+‘nmi’
+‘mils’
+‘unit’       -This has special meaning and the vectors will be unit</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="emlib.quant.quants.ObsPoints.fromSpherical">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fromSpherical</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makeUnit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#emlib.quant.quants.ObsPoints.fromSpherical" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an ObsPoints obj from spherical coordinates</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="emlib.quant.quants.ObsPoints.fromXYZ">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fromXYZ</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makeUnit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patinfo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#emlib.quant.quants.ObsPoints.fromXYZ" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an ObsPoints obj from x, y and z values</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="emlib.quant.quants.ObsPoints.makePlanarCut">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">makePlanarCut</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cutType</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Arbitrary'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[Length([0,</span> <span class="pre">-</span> <span class="pre">1,</span> <span class="pre">0]),</span> <span class="pre">Angle(1.57079633),</span> <span class="pre">Angle(0.1),</span> <span class="pre">Length([0,</span> <span class="pre">0,</span> <span class="pre">1])]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#emlib.quant.quants.ObsPoints.makePlanarCut" title="Permalink to this definition">¶</a></dt>
+<dd><p>Three points define a plane. The origin could be used as one point.
+some common planar cuts cutType:</p>
+<ol class="arabic simple">
+<li><p>Azimuth: varies in az at a fixed el: [azStart, azStop, azInc, fixedEl]</p></li>
+<li><p>Phi: varies in phi at a fixed theta: [phiStart, phiStop, phiInc, fixedtheta]</p></li>
+<li><p>Elevation: varies in el at fixed az: [elStart, elStop, elInc, fixedaz]</p></li>
+<li><p>Theta: varies in theta at fixed phi: [thetaStart, thetaStop, thetaInc, fixedPhi]</p></li>
+</ol>
+<p>5. Arbitrary: rotation about a vector (quaternion) [startPointxyz, angleStop, angleInc, rotaxis]
+Note # 5 includes 1 - 4</p>
+<p>az = -phi and el = 90 - theta</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="emlib.quant.quants.ObsPoints.makeUniformSphericalGrid">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">makeUniformSphericalGrid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">numPts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#emlib.quant.quants.ObsPoints.makeUniformSphericalGrid" title="Permalink to this definition">¶</a></dt>
+<dd><p>cretes an obsPoints obj that has points that are evenly distributed
+over a  sphere</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="emlib.quant.quants.Power">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Power</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#emlib.quant.quants.Power" title="Permalink to this definition">¶</a></dt>
+<dd><p>A  numpy array type class for values representing power.
+The default units are watts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> – Any real number, list of numbers or numpy array</p></li>
+<li><p><strong>units</strong> – default=None.  A string defining the units of value</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>units may optional be set to:</dt><dd><p>‘W’
+‘mW’
+‘kW’
+‘MW’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="emlib.quant.quants.Quaternion">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Quaternion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#emlib.quant.quants.Quaternion" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a limited quaternion class that performs 3D rotations on Vector arrays.
+It has two constructor:
+1. Quaternion(angle, axis)
+:param angle:  An Angle object with a single value that is the CCW rotation about axis
+:param axis:  A single row Vector defining the xyz axis of rotation</p>
+<p>2. Quaternion(q0, q1, q2, q3)
+:param q0,q1, q2, q3:   the four elements of a quaternion</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="emlib.quant.quants.RQuantBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RQuantBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#emlib.quant.quants.RQuantBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the abstract base class for all quantities</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="emlib.quant.quants.Resistance">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Resistance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#emlib.quant.quants.Resistance" title="Permalink to this definition">¶</a></dt>
+<dd><p>A  numpy array type class for values representing resistance.
+The default units are ohms.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> – Any real number, list of numbers or numpy array</p></li>
+<li><p><strong>units</strong> – default=None.  A string defining the units of value</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>units may optional be set to:</dt><dd><p>‘ohm’
+‘Ω’
+‘mohm’
+‘mΩ’
+‘kohm’
+‘kΩ’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="emlib.quant.quants.Time">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#emlib.quant.quants.Time" title="Permalink to this definition">¶</a></dt>
+<dd><p>A  numpy array type class for values representing time.
+The default units are seconds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> – Any real number, list of numbers or numpy array</p></li>
+<li><p><strong>units</strong> – default=None.  A string defining the units of value</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>units may optional be set to:</dt><dd><p>‘sec’
+‘s’
+‘ms’
+‘us’
+‘µs’
+‘ns’
+‘ps’
+‘min’
+‘hr’
+‘day’
+‘wk’
+‘yr’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="emlib.quant.quants.Vector">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#emlib.quant.quants.Vector" title="Permalink to this definition">¶</a></dt>
+<dd><p>A  numpy array type class for values representing x-y-z vectors.
+The default units are meters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> – Must be divisable by 3, list of numbers or numpy array</p></li>
+<li><p><strong>units</strong> – default=None.  A string defining the units of value</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>units may optional be set to:</dt><dd><p>‘m’
+‘cm’
+‘mm’
+‘um’
+‘µm’
+‘nm’
+‘pm’
+‘in’
+‘ft’
+‘yd’
+‘mi’
+‘nmi’
+‘mils’
+‘unit’       -This has special meaning and the vectors will be unit</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="emlib.quant.quants.Vector.norm">
+<span class="sig-name descname"><span class="pre">norm</span></span><a class="headerlink" href="#emlib.quant.quants.Vector.norm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalizes the vectors to all be unit vectors</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="emlib.quant.quants.Vector.phi">
+<span class="sig-name descname"><span class="pre">phi</span></span><a class="headerlink" href="#emlib.quant.quants.Vector.phi" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the spherical phi coordinate as an Angle obj</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="emlib.quant.quants.Vector.r">
+<span class="sig-name descname"><span class="pre">r</span></span><a class="headerlink" href="#emlib.quant.quants.Vector.r" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the spherical r coordinate as a Length obj</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="emlib.quant.quants.Vector.rotateBy">
+<span class="sig-name descname"><span class="pre">rotateBy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#emlib.quant.quants.Vector.rotateBy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs a quaternion rotation on this vector obj
+:param q:  a Quaternion obj</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="emlib.quant.quants.Vector.theta">
+<span class="sig-name descname"><span class="pre">theta</span></span><a class="headerlink" href="#emlib.quant.quants.Vector.theta" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the spherical theta coordinate as an Angle obj</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="emlib.quant.quants.Voltage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Voltage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#emlib.quant.quants.Voltage" title="Permalink to this definition">¶</a></dt>
+<dd><p>A  numpy array type class for values representing voltage.
+The default units are volts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> – Any real number, list of numbers or numpy array</p></li>
+<li><p><strong>units</strong> – default=None.  A string defining the units of value</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>units may optional be set to:</dt><dd><p>‘v’:
+‘mV’
+‘kV’
+‘eV’</p>
+</dd>
+</dl>
+</dd></dl>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">EMLib</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quantities Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fields.html">Electromagnetic fields and polarization classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="antennas.html">Antenna Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Antenna array and Beamformer Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plots.html">Plotting and GUI apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plots.html#plotting-functions">Plotting Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plots.html#polarization-analysis-application">Polarization Analysis Application</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to EMLib’s documentation!</a></li>
+      <li>Next: <a href="fields.html" title="next chapter">Electromagnetic fields and polarization classes</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2024, Keith Smith.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/quant.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
